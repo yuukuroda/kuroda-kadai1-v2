@@ -14,5 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call([
+            CategoryTableSeeder::class, // ★ ここに追加
+        ]);
+        $this->call([
+            ChannelsTableSeeder::class, // ★ ここに追加
+        ]);
     }
 }
