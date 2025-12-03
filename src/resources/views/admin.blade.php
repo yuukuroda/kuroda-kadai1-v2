@@ -74,6 +74,7 @@
                     <th class="contact-table__header">性別</th>
                     <th class="contact-table__header">メールアドレス</th>
                     <th class="contact-table__header">お問い合わせの種類</th>
+                    <th class="contact-table__header">どこで知りましたか</th>
                     <th class="contact-table__header">詳細</th>
                 </tr>
             </thead>
@@ -89,7 +90,10 @@
                     </td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->category->content }}</td>
-
+                    <td>@foreach($contact->channels as $channel)
+                        {{ $channel->content }}
+                        @endforeach
+                    </td>
                     <td>
                         <button class="detail__button">詳細</button>
                     </td>

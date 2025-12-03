@@ -33,6 +33,7 @@ class ContactRequest extends FormRequest
          'address' => ['required'],
          'category_id' => ['required'],
          'detail' =>  ['required','max:120'],
+         'channel_ids' => ['required'],
         ];
     }
 
@@ -60,6 +61,8 @@ class ContactRequest extends FormRequest
          'category_id.required' =>'お問い合わせの種類を選択してください',
          'detail.required' => 'お問い合わせ内容を入力してください',
          'detail.max:120' =>'お問い合わせ内容を120文字以内で入力してください',
+         'channel_ids.required' => 'どこで知りましたかを1つ以上選択してください',
+        //  'channel_ids.array' => 'どこで知りましたかの形式が不正です',
         ];
     }
 }

@@ -162,7 +162,7 @@
                     <select class="create-form__item-select" name="category_id">
                         <option value="" disabled selected>選択してください</option>
                         @foreach ($categories as $category)
-                        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                        <option value="{{ $category['id'] }}" {{ old('category_id')==$category->id ? 'selected' : '' }}>{{ $category['content'] }}</option>
                         @endforeach
                     </select>
 
@@ -197,18 +197,23 @@
                     <span class="form__label--required">※</span>
                 </div>
                 <div>
-                @foreach($channels as $channel)
-                <label>
-                    <input type="checkbox" name="channel_ids[]" value="{{ $channel->id }}">
-                    {{$channel->content}}
-                </label>
-                @endforeach
+                    @foreach($channels as $channel)
+                    <label>
+                        <input type="checkbox" name="channel_ids[]" value="{{ $channel->id }}" {{ in_array($channel->id, old('channel_ids', [])) ? 'checked' : '' }}>
+                        {{$channel->content}}
+                    </label>
+                    @endforeach
+                </div>
+                <div class="form__error">
+                    @error('channel_ids')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
-                <!-- 確認画面ボタン -->
-                <div class="form__button">
-                    <button class="form__button-submit" type="submit">確認画面</button>
-                </div>
+            <!-- 確認画面ボタン -->
+            <div class="form__button">
+                <button class="form__button-submit" type="submit">確認画面</button>
+            </div>
 
         </form>
     </div>
