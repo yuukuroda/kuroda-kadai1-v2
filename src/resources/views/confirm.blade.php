@@ -95,14 +95,22 @@
                         <input type="hidden" name="detail" value="{{ $contact['detail'] }}" />
                     </td>
                 </tr>
+                <!-- ファイル確認 -->
+                <tr class="confirm-table__row">
+                    <th class="confirm-table__header">画像ファイル</th>
+                    <td class="confirm-table__text">
+                       <img src="{{'/storage/'.$contact['image_file']}}">
+                        <input type="hidden" name="image_file" value="{{ $contact['image_file'] }}">
+                    </td>
+                </tr>
 
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">情報をどこで知ったか</th>
                     <td class="confirm-table__text">
-                    @foreach($channels as $channel)
+                        @foreach($channels as $channel)
                         <input type="text" name="channel_contents[]" value="{{ $channel->content }}" readonly>
                         <input type="hidden" name="channel_ids[]" value="{{ $channel->id }}">
-                    @endforeach
+                        @endforeach
                     </td>
                 </tr>
             </table>

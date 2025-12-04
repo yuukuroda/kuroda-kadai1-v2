@@ -20,9 +20,10 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
-
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel_1', 'tel_2', 'tel_3', 'address', 'building', 'category_id', 'detail']);;
+        
+        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel_1', 'tel_2', 'tel_3', 'address', 'building', 'category_id', 'detail','image_file']);;
         $channels = Channel::find($request->channel_ids);
+        $contact['image_file'] = $request->image_file->store('img','public');
 
         if (!isset($contact['gender'])) {
             $contact['gender'] = null;
@@ -45,7 +46,7 @@ class ContactController extends Controller
         $fullTel = $request->input('tel_1') . '-' .
             $request->input('tel_2') . '-' .
             $request->input('tel_3');
-        $contactData = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail']);
+        $contactData = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail','image_file']);
         $contactData['tel'] = $fullTel;
         
         $contact = Contact::create($contactData);

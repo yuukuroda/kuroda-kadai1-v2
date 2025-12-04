@@ -10,7 +10,7 @@
     <h2 class="contact-form__heading">Contact</h2>
     <!-- フォーム全体 -->
     <div class="contact-form__inner">
-        <form action="/contacts/confirm" method="post" novalidate>
+        <form action="/contacts/confirm" method="post" enctype="multipart/form-data" novalidate>
             @csrf
             <!-- 名前入力欄 -->
             <div class="form__group">
@@ -187,6 +187,18 @@
                         @error('detail')
                         {{ $message }}
                         @enderror
+                    </div>
+                </div>
+            </div>
+            <!-- ファイルアップロード欄 -->
+            <div class="form__group">
+                <div class="form__group-title">
+                    <span class="form__label--item">画像ファイル</span>
+                    <span class="form__label--required">※</span>
+                </div>
+                <div class="form__group-content">
+                    <div class="form__input--text">
+                        <input type="file" name="image_file" placeholder="画像ファイルを選択"/>
                     </div>
                 </div>
             </div>
