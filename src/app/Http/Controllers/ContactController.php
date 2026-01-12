@@ -38,7 +38,7 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request)
     {
-        // dd($request->all());
+        dd($request->all());
         // 戻るボタンを判定してwithInput
         if ($request->input('action') == 'back') {
             return redirect('/')->withInput();

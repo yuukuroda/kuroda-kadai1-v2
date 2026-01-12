@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/confirm.css') }}" />
 @endsection
 
 @section('content')
@@ -96,10 +96,12 @@
                     </td>
                 </tr>
                 <!-- ファイル確認 -->
+
                 <tr class="confirm-table__row">
+
                     <th class="confirm-table__header">画像ファイル</th>
                     <td class="confirm-table__text">
-                       <img src="{{'/storage/'.$contact['image_file']}}">
+                        <img class="img_preview" src="{{'/storage/'.$contact['image_file']}}">
                         <input type="hidden" name="image_file" value="{{ $contact['image_file'] }}">
                     </td>
                 </tr>
